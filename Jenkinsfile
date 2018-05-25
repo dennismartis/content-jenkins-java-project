@@ -1,11 +1,11 @@
 pipeline {
-  agent none
+  agent any
 
   environment {
     MAJOR_VERSION = 1
   }
 
-#  stages {
+  stages {
 #    stage('Say Hello') {
 #      agent any
 #
@@ -36,17 +36,17 @@ pipeline {
 #      }
 #    }
     stage('build') {
-      agent {
-        label 'apache'
-      }
+#      agent {
+#        label 'apache'
+#      }
       steps {
         sh 'ant -f build.xml -v'
       }
-      post {
-        success {
-          archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
-        }
-      }
+#      post {
+#        success {
+#          archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
+#        }
+#      }
     }
 #    stage('deploy') {
 #      agent {
@@ -120,7 +120,7 @@ pipeline {
 #        }
 #      }
 #    }
-#  }
+  }
 #  post {
 #    failure {
 #      emailext(
